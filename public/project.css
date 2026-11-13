@@ -1,0 +1,43 @@
+.project-hero {
+  align-items: center;
+  padding-block: clamp(36px, 7vw, 98px);
+}
+.project-hero .intro { padding: 0; }
+.project-hero .intro h1 { font-size: clamp(54px, 7.6vw, 104px); }
+.project-hero .intro p { max-width: 395px; }
+.project-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 25px;
+}
+.project-card > .line { margin-bottom: 10px; }
+.project-card .progress span {
+  width: 40%;
+  transform-origin: left;
+  animation: fill-example .7s ease-out both;
+}
+@keyframes fill-example {
+  from { transform: scaleX(0); }
+}
+.project-details {
+  padding: 30px 0 48px;
+  border-top: 1px solid var(--border);
+}
+.project-details h2 {
+  font: 42px/1 var(--serif);
+  margin: 0 0 18px;
+}
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 25px;
+}
+.project-grid h3 { font-size: 16px; margin: 0 0 7px; }
+.project-grid p { color: var(--soft); margin: 0 0 9px; }
+.project-entry { padding: 0 0 30px; max-width: 630px; }
+.project-entry summary { cursor: pointer; font-weight: 700; }
+.project-entry p { color: var(--soft); }
+@media (max-width: 780px) {
+  .project-grid { grid-template-columns: 1fr; gap: 18px; }
+}

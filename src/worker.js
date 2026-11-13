@@ -119,6 +119,9 @@ async function preview(invoice, body) {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    if (url.pathname === "/" && (url.searchParams.has("invoice") || url.searchParams.has("new"))) {
+      return env.ASSETS.fetch(new Request(new URL("/checkout", url), request));
+    }
     if (!url.pathname.startsWith("/api/")) return env.ASSETS.fetch(request);
     try {
       if (request.method === "POST") {

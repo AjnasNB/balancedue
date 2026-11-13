@@ -26,6 +26,10 @@ async function request(url, body, expected = 200) {
 
 try {
   await page.goto(origin);
+  await page.getByRole("heading", { name: /Pay in parts.*Keep one receipt/ }).waitFor();
+  assert.match(await page.getByRole("link", { name: "Watch the 76-second demo" }).getAttribute("href"), /balancedue-demo\.mp4$/);
+  await screenshot(page,"00-project");
+  await page.getByRole("link", { name: "Try the checkout" }).click();
   await page.getByRole("heading",{name:"Create an invoice"}).waitFor();
   assert.equal(await page.getByLabel("NEAR testnet recipient").isVisible(),false);
   await screenshot(page,"01-create");
@@ -75,18 +79,23 @@ try {
   await request(api+"/attempts",{amount:"1",route:"ethereum"},409);
   await other.close();
   const mobile = await browser.newPage({viewport:{width:390,height:844},isMobile:true,hasTouch:true});
+  await mobile.goto(origin);
+  await mobile.getByRole("link", { name: "Try the checkout" }).waitFor();
+  assert.equal(await mobile.evaluate(() => document.documentElement.scrollWidth <= innerWidth),true);
   await mobile.goto(url);
   await mobile.getByText("Payment complete",{exact:true}).waitFor();
   assert.equal(await mobile.evaluate(() => document.documentElement.scrollWidth <= innerWidth),true);
   await screenshot(mobile,"06-mobile");
   await mobile.close();
   if (process.env.TESTNET_RECEIPT) {
-    await page.goto(process.env.TESTNET_RECEIPT);
+    await page.goto(origin);
+    await page.getByRole("link", { name: "Open the verified receipt" }).click();
+    assert.equal(page.url(), process.env.TESTNET_RECEIPT);
     await page.getByText("Payment complete",{exact:true}).waitFor();
     assert.equal(await page.getByRole("link",{name:"View confirmed transfer ↗"}).count(),2);
     await screenshot(page,"07-testnet");
   }
-  console.log(JSON.stringify({ invoice:url, checks:["fresh browser","pending refresh","blocked concurrent attempt","failed attempt retry","quote","idempotent settlement","overpayment rejection","mobile","two transfers"] }));
+  console.log(JSON.stringify({ invoice:url, checks:["project page and checkout link","fresh browser","pending refresh","blocked concurrent attempt","failed attempt retry","quote","idempotent settlement","overpayment rejection","mobile",...(process.env.TESTNET_RECEIPT ? ["existing testnet receipt and two explorer links"] : [])] }));
 } finally {
   await context.close();
   await browser.close();

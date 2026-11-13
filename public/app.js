@@ -109,5 +109,5 @@ function invoicePage() {
 if (id) {
   api("/" + encodeURIComponent(id)).then(data => { invoice = data; invoicePage(); })
     .catch(e => stage("Invoice", "Link unavailable", "Open a valid invoice link or create a new invoice.",
-      `<section class="card"><p>${escape(e.message)}</p><a href="/" class="primary">Create an invoice</a></section>`));
+      `<section class="card"><p>${escape(e.message)}</p><a href="/?new=1" class="primary">Create an invoice</a></section>`));
 } else createPage();

@@ -8,7 +8,7 @@ Built for [NEAR Hackathon](https://nearhackathon.com/), Real-World Money. [Try t
 
 ## Try it
 
-1. Create a 100 USDC invoice in **USDC simulation**.
+1. Choose **Try the checkout** on the project page and create a 100 USDC invoice in **USDC simulation**.
 2. Start a 40 USDC payment and confirm it. Copy the invoice link and open it in another browser. It should show 60 USDC remaining.
 3. Choose USDT on Ethereum and preview a live exact-output quote for the remaining balance. It quotes delivery of 60 USDC on Base. This dry run returns no deposit address.
 4. Start the simulated payment. Refresh to see the pending attempt. Simulate a failure and verify the balance stays 60 USDC.

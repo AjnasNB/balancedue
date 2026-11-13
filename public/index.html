@@ -5,13 +5,50 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#f5f3eb">
 <meta name="referrer" content="no-referrer">
-<title>BalanceDue · Resume a payment</title>
+<meta name="description" content="BalanceDue keeps one crypto invoice open across payments. Try the checkout, watch the demo, and inspect a verified NEAR testnet receipt.">
+<title>BalanceDue · Pay in parts</title>
 <link rel="stylesheet" href="/style.css">
-<script type="module" src="/app.js"></script>
+<link rel="stylesheet" href="/project.css">
 </head>
 <body>
-<header class="shell top"><a class="brand" href="/" aria-label="BalanceDue home"><span class="mark">◒</span> BalanceDue</a><a class="toplink" href="/?new=1">New invoice <span aria-hidden="true">↗</span></a></header>
-<main class="shell" id="app" aria-busy="true"><p>Opening checkout…</p></main>
-<footer class="shell foot"><span>BalanceDue</span><span>Built for NEAR Hackathon</span></footer>
+<header class="shell top"><a class="brand" href="/" aria-label="BalanceDue home"><span class="mark" aria-hidden="true">◒</span> BalanceDue</a><a class="toplink" href="https://github.com/AjnasNB/balancedue">Source code <span aria-hidden="true">↗</span></a></header>
+<main class="shell project">
+  <section class="layout project-hero">
+    <div class="intro">
+      <div class="kicker"><span class="dot"></span> NEAR Hackathon · Real-World Money</div>
+      <h1>Pay in parts.<br><em>Keep one receipt.</em></h1>
+      <p>When your crypto is split across wallets, pay what you can now and open the same invoice later to finish.</p>
+      <div class="project-actions">
+        <a class="primary" href="/?new=1">Try the checkout</a>
+        <a class="secondary" href="https://github.com/AjnasNB/balancedue/releases/download/demo-v1/balancedue-demo.mp4">Watch the 76-second demo</a>
+      </div>
+    </div>
+    <div class="card project-card">
+      <div class="line"><p class="quiet">Example invoice</p><span class="pill">Simulation</span></div>
+      <h2>Brand identity project</h2>
+      <div class="balance">
+        <div class="quiet">Amount remaining</div>
+        <span class="number">60.00</span><span class="unit">USDC</span>
+        <div class="progress" role="progressbar" aria-label="Example invoice paid" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"><span></span></div>
+        <div class="line quiet"><span>Received 40.00</span><span>Total 100.00</span></div>
+      </div>
+      <p class="quiet">Open the same link from another browser to see the remaining 60 USDC.</p>
+    </div>
+  </section>
+  <section class="project-details" aria-labelledby="verify">
+    <h2 id="verify">Try it and check the results</h2>
+    <div class="project-grid">
+      <div><h3>Resume a payment</h3><p>Pay 40 USDC in the simulation. Reopen the link, fail an attempt, then retry for 60 USDC. The receipt shows both confirmed payments.</p></div>
+      <div><h3>Get a live quote</h3><p>Preview how much USDT on Ethereum would deliver the remaining USDC on Base. The quote moves no funds.</p></div>
+      <div><h3>Verify the testnet receipt</h3><p>Two wallets sent 0.04 and 0.06 testnet NEAR. Each payment links to its confirmed transaction.</p><a class="toplink" href="/?invoice=305b9d46-7f05-4982-adca-1532f1572c82">Open the verified receipt ↗</a></div>
+    </div>
+  </section>
+  <details class="project-entry">
+    <summary>Hackathon entry and prize address</summary>
+    <p>The demo uses NEAR testnet. The entry form separately requires a public NEAR mainnet payout address controlled by the entrant. In Meteor Wallet, choose <strong>Create new wallet</strong>, then <strong>Use Implicit Account</strong>. Back up your recovery phrase privately and copy the public address. You can generate it without a deposit.</p>
+    <p><a href="https://help.meteorwallet.app/en/articles/2-how-to-create-your-free-named-wallet-in-60-seconds">Wallet setup guide</a> · <a href="https://nearhackathon.com/#apply">Official entry form</a></p>
+  </details>
+</main>
+<footer class="shell foot"><a href="https://nearhackathon.com/">NEAR Hackathon</a><a href="https://github.com/AjnasNB/balancedue/releases/tag/demo-v1">Demo downloads</a></footer>
 </body>
 </html>
