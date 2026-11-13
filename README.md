@@ -4,6 +4,8 @@ A resumable invoice for buyers who hold funds in more than one wallet. Pay part,
 
 Built for [NEAR Hackathon](https://nearhackathon.com/), Real-World Money. [Try the hosted app](https://balancedue.ajnasnb.workers.dev).
 
+[Watch the narrated demo or download the browser recording](https://github.com/AjnasNB/balancedue/releases/tag/demo-v1).
+
 ## Try it
 
 1. Create a 100 USDC invoice in **USDC simulation**.
@@ -26,6 +28,10 @@ npm run dev
 ```
 
 Run the browser regression against a running instance with `node scripts/browser-demo.mjs`. Set `DEMO_URL` for a different origin and `DEMO_CAPTURE=1` for screenshots and recordings. The browser script uses installed Chrome. `node scripts/testnet.mjs` creates disposable testnet accounts using the public faucet and exercises two genuine transfers. It holds their signing keys in memory only. No mainnet signing is supported.
+
+## Tools and libraries
+
+The checkout uses browser JavaScript, Cloudflare Workers, D1 and Wrangler. The testnet runner uses near-api-js, the browser regression uses Playwright, and the video uses HyperFrames, GSAP, FFmpeg and Windows speech synthesis. See [video reproduction notes](video/README.md). BalanceDue is a new project built for the hackathon.
 
 ## How it works
 

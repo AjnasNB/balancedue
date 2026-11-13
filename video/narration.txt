@@ -1,0 +1,11 @@
+Your invoice is a hundred dollars. Your crypto is split across wallets. Balance Due lets you pay in parts and pick up from the same link.
+
+Here I simulate a forty U S D C payment. I open the invoice in a fresh browser and the forty is still there. The balance is sixty.
+
+Near Intents gives a live quote for the remaining balance. It shows how much U S D T on Ethereum would deliver exactly sixty U S D C on Base. No funds move.
+
+I simulate a failed payment. The balance stays at sixty. I retry, and the merchant gets one receipt with both confirmed payments.
+
+Here is a real testnet receipt. Two separate wallets sent point zero four and point zero six testnet Near. The app verified both transfers. A replay cannot count a payment twice.
+
+Try the hosted checkout, or run it from the public source. Pay in parts. Keep one receipt.

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>BalanceDue demo</title>
+<script src="gsap.min.js"></script>
+<style>
+* { box-sizing: border-box; }
+body { margin: 0; color: #f7f1df; font-family: sans-serif; }
+#main { position: relative; width: 100%; height: 100%; overflow: hidden; background: #172c24; }
+.brand { position: absolute; left: 58px; top: 41px; display: flex; align-items: center; gap: 11px; font-size: 20px; font-weight: 700; }
+.brand i { background: #d7ec8b; width: 10px; height: 10px; border-radius: 50%; }
+.scene { position: absolute; inset: 92px 52px 48px 58px; display: grid; grid-template-columns: 340px 1fr; gap: 35px; align-items: center; }
+.copy { min-width: 0; }
+.label { font-size: 13px; font-weight: 750; color: #d7ec8b; letter-spacing: 0.13em; line-height: 1.5; margin: 0 0 18px; }
+h1 { font: 400 63px/0.99 serif; letter-spacing: -0.052em; margin: 0; }
+.detail { color: #d6e0d7; font-size: 23px; line-height: 1.43; max-width: 315px; margin: 24px 0 0; }
+.shot { position: relative; width: 100%; overflow: hidden; border: 1px solid #8ea68b; border-radius: 14px; background: #f6f3ed; box-shadow: 0 18px 45px #0a1d15; }
+.shot img { display: block; width: 100%; }
+.shot .result { position: absolute; inset: 0; opacity: 0; }
+.closing { display: flex; justify-content: center; text-align: center; }
+.closing h1 { font-size: 124px; }
+.closing .detail { max-width: none; margin-top: 27px; }
+.url { font-size: 26px; color: #d7ec8b; margin: 7px 0 0; }
+.rule { position: absolute; bottom: 22px; left: 58px; right: 52px; height: 2px; background: #466254; }
+.progress { height: 100%; background: #d7ec8b; transform-origin: left; }
+</style>
+</head>
+<body>
+<div id="main" data-composition-id="main" data-width="1280" data-height="720" data-duration="{{duration}}">
+  <div class="brand"><i></i>BalanceDue</div>
+  {{clips}}
+  <div class="rule"><div class="progress"></div></div>
+</div>
+<script>
+  const timeline = gsap.timeline({ paused: true });
+  for (const scene of document.querySelectorAll(".scene")) {
+    const start = Number(scene.dataset.start);
+    const duration = Number(scene.dataset.duration);
+    timeline.fromTo(scene.querySelector(".copy"), { y: 19, opacity: 0 }, { y: 0, opacity: 1, duration: 0.38, ease: "power2.out" }, start);
+    const shot = scene.querySelector(".shot");
+    if (shot) timeline.fromTo(shot, { x: 15, opacity: 0 }, { x: 0, opacity: 1, duration: 0.48, ease: "power2.out" }, start + 0.08);
+    const result = scene.querySelector(".result");
+    if (result) timeline.to(result, { opacity: 1, duration: 0.38 }, start + duration * 0.65);
+  }
+  const duration = Number(document.getElementById("main").dataset.duration);
+  timeline.fromTo(".progress", { scaleX: 0 }, { scaleX: 1, duration, ease: "none" }, 0);
+  window.__timelines["main"] = timeline;
+</script>
+</body>
+</html>
