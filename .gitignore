@@ -1,0 +1,8 @@
+.wrangler/
+.qarinah/
+node_modules/
+.dev.vars*
+.env*
+artifacts/
+video/render/
+*.mp4

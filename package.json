@@ -1,0 +1,17 @@
+{
+  "name": "balancedue",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "test": "node --test",
+    "deploy": "wrangler deploy",
+    "db:local": "wrangler d1 migrations apply DB --local"
+  },
+  "devDependencies": {
+    "gsap": "3.15.1",
+    "near-api-js": "7.5.3",
+    "playwright": "1.61.0",
+    "wrangler": "^4.161.0"
+  }
+}

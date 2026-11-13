@@ -1,0 +1,20 @@
+{
+  "name": "balancedue",
+  "main": "src/worker.js",
+  "compatibility_date": "2026-11-13",
+  "assets": {
+    "directory": "public",
+    "binding": "ASSETS",
+    "run_worker_first": [
+      "/api/*"
+    ],
+    "not_found_handling": "single-page-application"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "balancedue-demo",
+      "database_id": "c0b4c6e9-c41e-4f25-aa06-9e1ea7337d29"
+    }
+  ]
+}
